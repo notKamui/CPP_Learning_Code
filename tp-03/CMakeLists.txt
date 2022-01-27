@@ -3,10 +3,13 @@ add_executable(tp3-pokemons
     Pokemons/PC.h
     Pokemons/PC.cpp
     Pokemons/Pokeball.h
+    Pokemons/Pokeball.cpp
     Pokemons/Pokemon.h
+    Pokemons/Pokemon.cpp
     Pokemons/Stdafx.h
     Pokemons/Tests.cpp
     Pokemons/Trainer.h
+    Pokemons/Trainer.cpp
 )
 
 target_include_directories(tp3-pokemons PRIVATE Pokemons/external)
