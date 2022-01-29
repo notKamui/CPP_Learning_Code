@@ -14,9 +14,10 @@ public:
 
     [[nodiscard]] const std::string& name() const { return _name; }
 
+    void set_trainer(Trainer* trainer) { _trainer = trainer;}
     [[nodiscard]] Trainer* trainer() const { return _trainer; }
 
 private:
-    const std::string& _name;
+    const std::string _name;
     Trainer*           _trainer {};
 };
