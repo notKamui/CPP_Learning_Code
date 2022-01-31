@@ -1,9 +1,11 @@
 #pragma once
 
+#include "Animal.h"
+
 #include <iostream>
 
-class Cow
+class Cow : public Animal
 {
 public:
-    void sing() const { std::cout << "Mewwwwwh" << std::endl; }
+    void sing(char end) const override { std::cout << "Mewwwwwh" << end; }
 };

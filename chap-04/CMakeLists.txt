@@ -7,7 +7,7 @@ add_executable(c4-1-hierarchy
     1-hierarchy/Intern.cpp
     1-hierarchy/Intern.h
     1-hierarchy/Rank.h
-)
+        1-hierarchy/Employee.h)
 
 add_executable(c4-2-farm
     2-farm/FarmHouse.cpp
@@ -16,11 +16,11 @@ add_executable(c4-2-farm
     2-farm/Chicken.h
     2-farm/Cow.h
     2-farm/Dog.h
-)
+        2-farm/Opera.h)
 
 add_executable(c4-3-vehicles
     3-vehicles/Program.cpp
     3-vehicles/Car.h
     3-vehicles/Scooter.h
     3-vehicles/Vehicle.h
-)
+        3-vehicles/FlyingCar.h)

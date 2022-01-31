@@ -12,8 +12,10 @@ public:
         , _speed { speed }
     {}
 
-    unsigned int drive() const override
+    [[nodiscard]] unsigned int drive() const override
     {
+        if (!_driver.has_car_licence())
+            return 0u;
         std::cout << "Vrooooom!" << std::endl;
         return _speed;
     }
