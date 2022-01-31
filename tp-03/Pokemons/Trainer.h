@@ -1,8 +1,8 @@
 #pragma once
 
-#include "PC.h"
 #include "Pokeball.h"
 #include "Pokemon.h"
+#include "PC.h"
 
 #include <array>
 #include <memory>
@@ -12,34 +12,15 @@
 class Trainer
 {
 public:
-    Trainer(const std::string& name, PC& pc)
-        : _name { name }
-        , _pc { pc }
-    {}
+    Trainer(const std::string& name, PC& pc);
 
-    [[nodiscard]] const std::string& name() const { return _name; }
+    [[nodiscard]] const std::string& name() const;
 
-    [[nodiscard]] const std::array<Pokeball, 6>& pokeballs() const { return _pokeballs; }
+    [[nodiscard]] const std::array<Pokeball, 6>& pokeballs() const;
 
-    void capture(std::unique_ptr<Pokemon> pokemon)
-    {
-        pokemon->set_trainer(this);
-        for (auto& pokeball : _pokeballs)
-        {
-            if (pokeball.empty())
-            {
-                pokeball.store(std::move(pokemon));
-                return;
-            }
-        }
-        _pc.receive(std::move(pokemon));
-    }
+    void capture(std::unique_ptr<Pokemon> pokemon);
 
-    void store_in_pc(int pos)
-    {
-        _pc.receive(std::make_unique<Pokemon>(_pokeballs.at(pos).pokemon()));
-        _pokeballs.at(pos) = Pokeball();
-    }
+    void store_in_pc(int pos);
 
 private:
     const std::string       _name;

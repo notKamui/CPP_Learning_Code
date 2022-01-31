@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Pokemon.h"
-#include "Trainer.h"
 
 #include <memory>
 #include <vector>
@@ -11,22 +10,11 @@
 class PC
 {
 public:
-    [[nodiscard]] const std::vector<std::unique_ptr<Pokemon>>& pokemons() const { return _pokemons; }
+    [[nodiscard]] const std::vector<std::unique_ptr<Pokemon>>& pokemons() const;
 
-    void receive(std::unique_ptr<Pokemon> pokemon) { _pokemons.emplace_back(std::move(pokemon)); }
+    void receive(std::unique_ptr<Pokemon> pokemon);
 
-    void give_back(Trainer& trainer, const std::string& name)
-    {
-        for (int i = 0; i < (int)_pokemons.size(); ++i)
-        {
-            if (_pokemons[i]->name() == name && _pokemons[i]->trainer() == &trainer)
-            {
-                trainer.capture(std::move(_pokemons[i]));
-                _pokemons.erase(_pokemons.begin() + i);
-                return;
-            }
-        }
-    }
+    void give_back(Trainer& trainer, const std::string& name);
 
 private:
     std::vector<std::unique_ptr<Pokemon>> _pokemons;
