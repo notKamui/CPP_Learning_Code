@@ -14,7 +14,9 @@ public:
 
     void answer_phone() const { std::cout << "Hi! " << _name << " on the phone!" << std::endl; }
 
-    int get_position() const { return _position; }
+    [[nodiscard]] const std::string& name() const { return _name; }
+
+    [[nodiscard]] int get_position() const { return _position; }
 
     void set_position(int position) { _position = position; }
 

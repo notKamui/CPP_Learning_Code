@@ -23,7 +23,7 @@ public:
     // circle 2 where r1^2 - d1^2  = r2^2 - d2^2 using d1 + d2 = distance dc between the centers, we get: d1^2
     // = r1^2 - r2^2 + (dc - d1)^2, that is (d1 + (dc - d1))(d1 - (dc - d1)) = r1^2 - r2^2, that is 2d1 =
     // (r1^2 - r2^2) / dc + dc
-    PointContainer intersect(const Circle& other) const
+    [[nodiscard]] PointContainer intersect(const Circle& other) const
     {
         PointContainer result;
         const Point    center_to_center = other.center - center;
@@ -51,7 +51,7 @@ public:
     // intersect the two lines if the distance d of this intersection point P to the center is larger than the
     // radius, they don't intersect; otherwise, they intersect on the points at distance sqrt(radius * radius
     // - d * d) on L around P
-    PointContainer intersect(const Line& ln) const override
+    [[nodiscard]] PointContainer intersect(const Line& ln) const override
     {
         PointContainer       result;
         Point                ln_dir       = ln.direction();
@@ -74,5 +74,16 @@ public:
         return result;
     }
 
-    ~Circle() = default;
+    [[nodiscard]] PointContainer intersect(const Shape&) const override
+    {
+        PointContainer result;
+        return result;
+    }
+
+    std::ostream& print(std::ostream& os) const override
+    {
+        return os << "Circle(center=" << center << ", radius=" << radius << ")";
+    }
+
+    ~Circle() override = default;
 };

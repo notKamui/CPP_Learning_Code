@@ -14,10 +14,10 @@ public:
     Point operator+(const Point& p) const { return { x + p.x, y + p.y }; }
     Point operator-(const Point& p) const { return { x - p.x, y - p.y }; }
     Point operator*(const float scale) const { return { x * scale, y * scale }; }
-    float dist_to_0() const { return std::sqrt(x * x + y * y); }
-    float dist(const Point& p) const { return (*this - p).dist_to_0(); }
-    Point normalized(const float target_length = 1.0f) const { return *this * (target_length / dist_to_0()); }
-    Point rotate_90deg() const { return { -y, x }; }
+    [[nodiscard]] float dist_to_0() const { return std::sqrt(x * x + y * y); }
+    [[nodiscard]] float dist(const Point& p) const { return (*this - p).dist_to_0(); }
+    [[nodiscard]] Point normalized(const float target_length = 1.0f) const { return *this * (target_length / dist_to_0()); }
+    [[nodiscard]] Point rotate_90deg() const { return { -y, x }; }
 
     Point& operator+=(const Point& p) { return *this = *this + p; }
     Point& operator-=(const Point& p) { return *this += -p; }
