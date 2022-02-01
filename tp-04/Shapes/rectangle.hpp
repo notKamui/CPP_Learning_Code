@@ -26,9 +26,8 @@ public:
         return os << "rectangle (" << lower_left << ", " << upper_right << ")";
     }
 
-    PointContainer intersect(const Line&) const override {
-        PointContainer result;
-        return result;
+    PointContainer intersect(const Line& ln) const override {
+        return intersect((Shape&)ln);
     }
 
     [[nodiscard]] bool point_is_inside(const Point& p) const
